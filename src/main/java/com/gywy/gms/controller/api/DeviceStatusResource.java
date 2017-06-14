@@ -45,6 +45,7 @@ public class DeviceStatusResource {
         System.out.println(record.getCommunic());
         System.out.println("= = = = =");
 
+        //这里的问题很大 是一个爆炸点
         Socket sock=new Socket("localhost",8090);
         OutputStream out=sock.getOutputStream();
         byte buf[];
@@ -53,11 +54,8 @@ public class DeviceStatusResource {
         out.write(buf);
         out.flush();
 
-        /**
-         * 这里存在一个问题 就是就是端口监听器只能得到一次数据
-         */
-        Result result=new Result();
 
+        Result result=new Result();
         result.setResult("0");
         result.setErrmsg("ok");
         result.setCode("000");
